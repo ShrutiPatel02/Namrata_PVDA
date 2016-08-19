@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeeFk2Link"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  EntityAssociation="model.entity.admin.EmployeeFk2Assoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="ManageridEmployeeVO"
+    Cardinality="1"
+    Owner="model.view.admin.EmployeeVO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ManageridEmployeeVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.view.admin.EmployeeVO.Employeeid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ChildEmployeeVO"
+    Cardinality="-1"
+    Owner="model.view.admin.EmployeeVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ChildEmployeeVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.view.admin.EmployeeVO.Managerid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

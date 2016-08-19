@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="WEB-INF/taskflows/SHRUTI_ADMIN.xml" id="SHRUTI_ADMIN" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/taskflows/AdminTF.xml" id="AdminTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/taskflows/validateUserTF.xml" id="validateUserTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="fusionJWTTokenEndpoint"/>
+      <input-parameter name="jwt"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflows/managerIncidentDetailsTF.xml" id="managerIncidentDetailsTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="jwt"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false"/>
+</task-flow-registry>

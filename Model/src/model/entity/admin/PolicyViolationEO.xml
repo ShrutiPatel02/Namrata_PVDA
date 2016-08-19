@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PolicyViolationEO"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="POLICYVIOLATION"
+  AliasName="PolicyViolationEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="model.entity.admin.PolicyViolationEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access|DML"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="Policyviolationcode"
+    IsNotNull="true"
+    Precision="5"
+    ColumnName="POLICYVIOLATIONCODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POLICYVIOLATION"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Policyviolationname"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="POLICYVIOLATIONNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POLICYVIOLATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Policyviolationtypedesc"
+    Precision="100"
+    ColumnName="POLICYVIOLATIONTYPEDESC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POLICYVIOLATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PolicyviolationtypePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="POLICYVIOLATIONTYPE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.admin.PolicyViolationEO.Policyviolationcode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC007105">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C007105"/>
+      <Attr Name="_checkCondition" Value='"POLICYVIOLATIONCODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.admin.PolicyViolationEO.Policyviolationcode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC007106">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C007106"/>
+      <Attr Name="_checkCondition" Value='"POLICYVIOLATIONNAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.admin.PolicyViolationEO.Policyviolationname"/>
+    </AttrArray>
+  </Key>
+</Entity>

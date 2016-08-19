@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PVDAAppModule"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  ComponentClass="model.am.PVDAAppModuleImpl"
+  DefClass="model.am.PVDAAppModuleDefImpl"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.am.PVDAAppModule_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="DisciplinaryActionLOV1"
+    ViewObjectName="model.view.DisciplinaryActionLOV"/>
+  <ViewUsage
+    Name="DisciplinaryActionTypeLOV1"
+    ViewObjectName="model.view.DisciplinaryActionTypeLOV"/>
+  <ViewUsage
+    Name="DisciplinaryActionTypeVO1"
+    ViewObjectName="model.view.DisciplinaryActionTypeVO"/>
+  <ViewUsage
+    Name="EmployeeHRCheckVO1"
+    ViewObjectName="model.view.EmployeeHRCheckVO"/>
+  <ViewUsage
+    Name="EmployeeHRLOV1"
+    ViewObjectName="model.view.EmployeeHRLOV"/>
+  <ViewUsage
+    Name="EmployeeInfoVO1"
+    ViewObjectName="model.view.EmployeeInfoVO"/>
+  <ViewUsage
+    Name="EmployeeLOV1"
+    ViewObjectName="model.view.EmployeeLOV"/>
+  <ViewUsage
+    Name="GetEmployeeHRVO1"
+    ViewObjectName="model.view.GetEmployeeHRVO"/>
+  <ViewUsage
+    Name="IncidentReportedByLOV1"
+    ViewObjectName="model.view.IncidentReportedByLOV"/>
+  <ViewUsage
+    Name="IncidentReportVO1"
+    ViewObjectName="model.view.IncidentReportVO"/>
+  <ViewUsage
+    Name="ReportingManagerLOV1"
+    ViewObjectName="model.view.ReportingManagerLOV"/>
+  <ViewUsage
+    Name="StatusLOV1"
+    ViewObjectName="model.view.StatusLOV"/>
+  <ViewUsage
+    Name="ManagerIncidentReportVO1"
+    ViewObjectName="model.view.ManagerIncidentReportVO"/>
+  <ViewUsage
+    Name="PolicyViolationVO1"
+    ViewObjectName="model.view.PolicyViolationVO"/>
+  <ViewUsage
+    Name="DisciplinaryActionTypeVO2"
+    ViewObjectName="model.view.admin.DisciplinaryActionTypeVO"/>
+  <ViewUsage
+    Name="PolicyViolationVO2"
+    ViewObjectName="model.view.admin.PolicyViolationVO"/>
+  <ViewUsage
+    Name="EmployeeVO1"
+    ViewObjectName="model.view.admin.EmployeeVO"/>
+  <ViewUsage
+    Name="EmployeeVOvialink"
+    ViewObjectName="model.view.admin.EmployeeVO"/>
+  <ViewUsage
+    Name="YesNoVO1"
+    ViewObjectName="model.view.admin.YesNoLOV"/>
+  <ViewLinkUsage
+    Name="EmployeeFk2Link1"
+    ViewLinkObjectName="model.view.admin.EmployeeFk2Link"
+    SrcViewUsageName="model.am.PVDAAppModule.EmployeeVO1"
+    DstViewUsageName="model.am.PVDAAppModule.EmployeeVOvialink"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

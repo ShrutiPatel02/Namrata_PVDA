@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.65.57" id="EmployeePageDef" Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variableUsage DataControl="PVDAAppModuleDataControl"
+                     Binds="EmployeeVO1.variablesMap.bindmanagerid"
+                     Name="ExecuteWithParams_bindmanagerid"
+                     IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="EmployeeVO1" RangeSize="25"
+              DataControl="PVDAAppModuleDataControl" id="EmployeeVO1Iterator"
+              ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="TopRankedManager"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="EmployeeVO1Iterator" id="TopRankedManagerQuery"/>
+    <searchRegion Criteria="TopRankedManager"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="EmployeeVO1Iterator" id="TopRankedManagerQuery1"/>
+    <searchRegion Criteria="EmployeeVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="EmployeeVO1Iterator" id="EmployeeVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO1">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO" Name="EmployeeVO10"
+                      TargetIterator="${bindings.EmployeeVO1Iterator}">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO11">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO110">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO12">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO120">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO13">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO130">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO14">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO140">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="EmployeeVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="bindmanagerid" NDType="oracle.jbo.domain.Number"
+                 NDValue="${bindings.ExecuteWithParams_bindmanagerid}"/>
+    </action>
+    <attributeValues IterBinding="variables" id="bindmanagerid">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_bindmanagerid"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO15">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO150">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO16">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO160">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO17">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO170">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO18">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO180">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO19">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO"
+                      Name="EmployeeVO190">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

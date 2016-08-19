@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="logout">
+       <af:form id="f1">
+            <af:panelStretchLayout id="psl2" topHeight="17px">
+                <f:facet name="center">
+                    <af:panelGridLayout landmark="main" id="pgl1">
+                        <af:gridRow marginTop="50px" height="50%"
+                                    marginBottom="5px" id="gr1">
+                            <af:gridCell marginStart="400px" width="50%"
+                                         landmark="none" marginEnd="5px"
+                                         id="gc1">
+                                <af:panelBox id="pb1" inlineStyle="width:450px;"
+                                             background="medium">
+                                    <af:panelGroupLayout layout="horizontal"
+                                                         id="pgl2">
+                                        <af:image source="/images/signout-1.png"
+                                                  id="i1"/>
+                                        <af:spacer width="4" id="s1"/>
+                                        <af:outputFormatted value="You have successfully logged out of the PVDA."
+                                                            id="plam1"
+                                                            inlineStyle="text-align:center; font-size:large; font-weight:bold; text-decoration:none;"/>
+                                    </af:panelGroupLayout>
+                                </af:panelBox>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

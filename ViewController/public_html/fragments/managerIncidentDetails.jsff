@@ -1,0 +1,514 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  
+  <af:panelStretchLayout id="psl2"
+                         inlineStyle="background:rgb(181,231,255) "
+                         topHeight="17px">
+    <f:facet name="center">
+      <af:panelGridLayout id="pgl1" landmark="main" dimensionsFrom="parent">
+        <af:gridRow marginTop="5px" height="100%" id="gr1">
+          <af:gridCell marginStart="5px" width="100%" id="gc1" valign="stretch"
+                       halign="stretch">
+            <af:panelSplitter id="ps1" orientation="vertical"
+                              splitterPosition="350">
+              <f:facet name="first">
+                <af:showDetailHeader text="Worklist" maximized="true"
+                                     disclosed="true" id="sdh1" type="default">
+                  <f:facet name="toolbar">
+                    <af:toolbar id="t3" rendered="true">
+                      <af:group id="g5">
+                        <af:commandButton text="Save" id="ctb9"
+                                          icon="/images/save.gif"
+                                          action="#{backingBeanScope.managerActivity.saveIncident}"></af:commandButton>
+                        <af:commandButton text="Cancel" id="ctb11"
+                                          icon="/images/cancel.gif"
+                                          immediate="true"
+                                          action="#{backingBeanScope.managerActivity.cancelIncidentDetails}"/>
+                      </af:group>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:panelCollection id="pc1" featuresOff="statusBar">
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t6" partialTriggers="t1">
+                        <af:group id="g6">
+                          <af:commandButton text="Add" id="ctb1"
+                                            icon="/images/add.gif"
+                                            action="#{backingBeanScope.managerActivity.createNewIncident}"/>
+                          <af:commandButton text="Approve" immediate="true"
+                                            id="ctb18"
+                                            action="#{backingBeanScope.managerActivity.approveIncident}"
+                                            visible="#{sessionScope.approveButtonVis!=null?(sessionScope.approveButtonVis eq 'true'?'true':'false'):'false'}"
+                                            icon="/images/edit-3.png"/>
+                          <af:commandButton text="Delete" id="ctb17"
+                                            icon="/images/trash.gif">
+                            <af:showPopupBehavior popupId="::p1"
+                                                  triggerType="action"/>
+                          </af:commandButton>
+                        </af:group>
+                      </af:toolbar>
+                    </f:facet>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.ManagerIncidentReportVO1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ManagerIncidentReportVO1.rangeSize}"
+                              emptyText="#{bindings.ManagerIncidentReportVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.ManagerIncidentReportVO1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.ManagerIncidentReportVO1.collectionModel.makeCurrent}"
+                              rowSelection="single"
+                              fetchSize="#{bindings.ManagerIncidentReportVO1.rangeSize}"
+                              filterModel="#{bindings.ManagerIncidentReportVO1Query.queryDescriptor}"
+                              columnStretching="column:c2"
+                              queryListener="#{bindings.ManagerIncidentReportVO1Query.processQuery}"
+                              varStatus="vs"
+                              binding="#{backingBeanScope.managerActivity.managerIncidentReportTable}"
+                              filterVisible="true" contentDelivery="immediate"
+                              immediate="true" id="t1">
+                      <af:column sortProperty="" filterable="true"
+                                 sortable="true" headerText="Incident" id="c2i">
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Incidentsummary.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Incident Summary" id="c2">
+                        <af:inputText value="#{row.Incidentsummary}"
+                                      editable="onAccess" immediate="true"
+                                      autoSubmit="true"
+                                      shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Incidentsummary.tooltip}"
+                                      id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Employeeid.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Employee" id="c3">
+                        <af:selectOneChoice value="#{row.bindings.Employeeid.inputValue}"
+                                            label="#{row.bindings.Employeeid.label}"
+                                            required="#{bindings.ManagerIncidentReportVO1.hints.Employeeid.mandatory}"
+                                            shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Employeeid.tooltip}"
+                                            readOnly="true" id="soc2">
+                          <f:selectItems value="#{row.bindings.Employeeid.items}"
+                                         id="si2"/>
+                          <f:validator binding="#{row.bindings.Employeeid.validator}"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Status.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.ManagerIncidentReportVO1.hints.Status.label}"
+                                 id="c11">
+                        <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                            label="#{row.bindings.Status.label}"
+                                            required="#{bindings.ManagerIncidentReportVO1.hints.Status.mandatory}"
+                                            shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Status.tooltip}"
+                                            readOnly="true" id="soc4">
+                          <f:selectItems value="#{row.bindings.Status.items}"
+                                         id="si4"/>
+                          <f:validator binding="#{row.bindings.Status.validator}"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Hrid.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Assigned To HR" id="c4">
+                        <af:selectOneChoice value="#{row.bindings.Hrid.inputValue}"
+                                            label="#{row.bindings.Hrid.label}"
+                                            required="#{bindings.ManagerIncidentReportVO1.hints.Hrid.mandatory}"
+                                            shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Hrid.tooltip}"
+                                            readOnly="true" id="soc13">
+                          <f:selectItems value="#{row.bindings.Hrid.items}"
+                                         id="si13"/>
+                          <f:validator binding="#{row.bindings.Hrid.validator}"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Incidentreportedby.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="ReportedBy" id="c6">
+                        <af:selectOneChoice value="#{row.bindings.Incidentreportedby.inputValue}"
+                                            label="#{row.bindings.Incidentreportedby.label}"
+                                            required="#{bindings.ManagerIncidentReportVO1.hints.Incidentreportedby.mandatory}"
+                                            shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Incidentreportedby.tooltip}"
+                                            readOnly="true" id="soc14">
+                          <f:selectItems value="#{row.bindings.Employeeid.items}"
+                                         id="si14"/>
+                          <f:validator binding="#{row.bindings.Employeeid.validator}"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Incidentreporteddate.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Reported Date" id="c9">
+                        <af:outputText value="#{row.Incidentreporteddate}"
+                                       shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Incidentreporteddate.tooltip}"
+                                       id="ot3">
+                          <af:convertDateTime pattern="#{bindings.ManagerIncidentReportVO1.hints.Incidentreporteddate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Violationcode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Policy Violation" id="c7">
+                        <af:selectOneChoice value="#{row.bindings.Violationcode.inputValue}"
+                                            label="#{row.bindings.Violationcode.label}"
+                                            required="#{bindings.ManagerIncidentReportVO1.hints.Violationcode.mandatory}"
+                                            shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Violationcode.tooltip}"
+                                            readOnly="true" id="soc1">
+                          <f:selectItems value="#{row.bindings.Violationcode.items}"
+                                         id="si1"/>
+                          <f:validator binding="#{row.bindings.Violationcode.validator}"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ManagerIncidentReportVO1.hints.Disciplinaryactioncode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Disciplinary Action" id="c8">
+                        <af:selectOneChoice value="#{row.bindings.Disciplinaryactioncode.inputValue}"
+                                            label="#{row.bindings.Disciplinaryactioncode.label}"
+                                            required="#{bindings.ManagerIncidentReportVO1.hints.Disciplinaryactioncode.mandatory}"
+                                            shortDesc="#{bindings.ManagerIncidentReportVO1.hints.Disciplinaryactioncode.tooltip}"
+                                            readOnly="true" id="soc12">
+                          <f:selectItems value="#{row.bindings.Disciplinaryactioncode.items}"
+                                         id="si12"/>
+                          <f:validator binding="#{row.bindings.Disciplinaryactioncode.validator}"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:showDetailHeader>
+              </f:facet>
+            </af:panelSplitter>
+          </af:gridCell>
+          <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="gc6"
+                       halign="stretch" valign="stretch">
+            <af:panelBox text="My Reportees" id="pb2">
+              <!--<af:tree value="#{bindings.EmployeeVO1.treeModel}" var="node"
+                       selectionListener="#{bindings.EmployeeVO1.treeModel.makeCurrent}"
+                       rowSelection="single" id="t2">
+                <f:facet name="nodeStamp">
+                  <af:outputText value="#{node}" id="ot5"/>
+                </f:facet>
+              </af:tree>-->
+              <!--af:listView value="#{bindings.ManagerReporteesVO1.collectionModel}" var="item" inlineStyle="height: 300px;"
+                                 emptyText="#{bindings.ManagerReporteesVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                 fetchSize="#{bindings.ManagerReporteesVO1.rangeSize}" id="lv1">
+                        <af:listItem id="li1">
+                            <af:panelGridLayout id="pgl2">
+                                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
+                                    <af:gridCell marginStart="5px" width="80%" id="gc4">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl5">
+                                                    <af:panelGroupLayout layout="vertical" id="pgl6">
+                                                        <af:image  source="/images/nopic-1.png" id="i1" shortDesc="#{item.bindings.Fullname}">
+                                                        </af:image></af:panelGroupLayout>
+                                                         <af:panelGroupLayout layout="vertical" id="pgl7">
+                                                          <af:outputFormatted  value="#{item.bindings.Fullname.inputValue}"
+                                                                            id="of5"/>
+                                                    </af:panelGroupLayout>
+                                   </af:panelGroupLayout>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="5px" width="40%" marginEnd="5px" id="gc5">
+                                        <af:panelFormLayout  id="pgl9" maxColumns="1">
+                                                              <af:spacer height="5" id="sp"/>
+                                                        <af:commandImageLink  text="#{item.bindings.Incidentcount.inputValue}" shortDesc="Total Action taken till Date"
+                                                                             styleClass="#{(item.bindings.Incidentcount.inputValue gt 1?(item.bindings.Incidentcount.inputValue gt 4?'myviewRedBG':'myviewAmberBG'):'myviewGreenBG')}"
+                                                                        id="of2">
+                                                    </af:commandImageLink>
+                                              <af:spacer height="5" id="s3"/>
+                                                        </af:panelFormLayout>
+                                    </af:gridCell>
+                                </af:gridRow>
+                            </af:panelGridLayout>
+                        </af:listItem>
+                    </af:listView-->
+            </af:panelBox>
+          </af:gridCell>
+        </af:gridRow>
+        <af:gridRow marginTop="5px" height="100%" marginBottom="5px" id="gr2">
+          <af:gridCell marginStart="5px" width="100%" id="gc3" halign="stretch"
+                       valign="stretch">
+            <af:panelStretchLayout id="psl1" topHeight="0px"
+                                   partialTriggers="pc1:t1">
+              <f:facet name="center">
+                <af:panelTabbed id="pt1">
+                  <af:showDetailItem text="Incident Details" disclosed="true"
+                                     id="sdi1" stretchChildren="first">
+                    <af:panelGroupLayout layout="horizontal" id="pgl11">
+                      <af:panelGroupLayout id="pgl8" layout="vertical"
+                                           halign="start" valign="top" partialTriggers="pc1:t1">
+                        <af:panelFormLayout id="pfl3">
+                          <af:selectOneChoice value="#{bindings.Employeeid1.inputValue}"
+                                              label="Employee" autoSubmit="true"
+                                              immediate="true"
+                                              required="#{bindings.Employeeid.hints.mandatory}"
+                                              readOnly="#{sessionScope.newIncident!=null?(sessionScope.newIncident eq 'true'?'false':'true'):'true'}"
+                                              shortDesc="#{bindings.Employeeid1.hints.tooltip}"
+                                              id="soc15">
+                            <f:selectItems value="#{bindings.Employeeid1.items}"
+                                           id="si15"/>
+                            <f:validator binding="#{bindings.Employeeid.validator}"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice value="#{bindings.Incidentreportedby1.inputValue}"
+                                              immediate="true"
+                                              readOnly="#{sessionScope.newIncident!=null?(sessionScope.newIncident eq 'true'?'false':'true'):'true'}"
+                                              label="ReportedBy"
+                                              autoSubmit="true"
+                                              required="#{bindings.Incidentreportedby1.hints.mandatory}"
+                                              shortDesc="#{bindings.Incidentreportedby1.hints.tooltip}"
+                                              id="soc16">
+                            <f:selectItems value="#{bindings.Incidentreportedby1.items}"
+                                           id="si16"/>
+                            <f:validator binding="#{bindings.Incidentreportedby.validator}"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice value="#{bindings.Hrid1.inputValue}"
+                                              label="Assigned To HR"
+                                              readOnly="true"
+                                              required="#{bindings.Hrid1.hints.mandatory}"
+                                              autoSubmit="true" immediate="true"
+                                              shortDesc="#{bindings.Hrid1.hints.tooltip}"
+                                              id="soc17">
+                            <f:selectItems value="#{bindings.Hrid1.items}"
+                                           id="si17"/>
+                            <f:validator binding="#{bindings.Hrid1.validator}"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice value="#{bindings.Reportingmanager1.inputValue}"
+                                              autoSubmit="true"
+                                              label="Reporting Manager"
+                                              immediate="true" readOnly="true"
+                                              required="#{bindings.Reportingmanager1.hints.mandatory}"
+                                              shortDesc="#{bindings.Reportingmanager1.hints.tooltip}"
+                                              id="soc10">
+                            <f:selectItems value="#{bindings.Reportingmanager1.items}"
+                                           id="si10"/>
+                            <f:validator binding="#{bindings.Reportingmanager1.validator}"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice value="#{bindings.Violationcode1.inputValue}"
+                                              autoSubmit="true"
+                                              label="Policy Violation"
+                                              readOnly="#{bindings.Status1.inputValue!=null?(bindings.Status1.inputValue eq 'APPROVED'?'true':'false'):'false'}"
+                                              required="#{bindings.Violationcode1.hints.mandatory}"
+                                              immediate="true"
+                                              shortDesc="#{bindings.Violationcode1.hints.tooltip}"
+                                              id="soc18">
+                            <f:selectItems value="#{bindings.Violationcode1.items}"
+                                           id="si18"/>
+                            <f:validator binding="#{bindings.Violationcode1.validator}"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice value="#{bindings.Disciplinaryactioncode1.inputValue}"
+                                              autoSubmit="true"
+                                              label="Disciplinary Action"
+                                              immediate="true"
+                                              readOnly="#{bindings.Status1.inputValue!=null?(bindings.Status1.inputValue eq 'APPROVED'?'true':'false'):'false'}"
+                                              valueChangeListener="#{backingBeanScope.managerActivity.discActionTypeValueChange}"
+                                              required="#{bindings.Disciplinaryactioncode1.hints.mandatory}"
+                                              shortDesc="#{bindings.Disciplinaryactioncode1.hints.tooltip}"
+                                              id="soc20">
+                            <f:selectItems value="#{bindings.Disciplinaryactioncode1.items}"
+                                           id="si20"/>
+                            <f:validator binding="#{bindings.Disciplinaryactioncode1.validator}"/>
+                          </af:selectOneChoice>
+                        </af:panelFormLayout>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" id="s1"/>
+                      <af:panelGroupLayout layout="vertical" id="pgl10">
+                        <af:panelFormLayout id="pfl2">
+                          <af:selectOneChoice value="#{bindings.Status1.inputValue}"
+                                              autoSubmit="true"
+                                              visible="#{sessionScope.newIncident!=null?(sessionScope.newIncident eq 'true'?'false':'true'):'true'}"
+                                              label="#{bindings.Status1.label}"
+                                              immediate="true" readOnly="true"
+                                              required="#{bindings.Status1.hints.mandatory}"
+                                              shortDesc="#{bindings.Status1.hints.tooltip}"
+                                              id="soc21">
+                            <f:selectItems value="#{bindings.Status1.items}"
+                                           id="si21"/>
+                            <f:validator binding="#{bindings.Status1.validator}"/>
+                          </af:selectOneChoice>
+                          <af:inputDate value="#{bindings.Incidentreporteddate.inputValue}"
+                                        autoSubmit="true" label="ReportedDate"
+                                        immediate="true"
+                                        readOnly="#{bindings.Status.inputValue!=null?(bindings.Status.inputValue eq 'APPROVED'?'true':'false'):'false'}"
+                                        required="#{bindings.Incidentreporteddate.hints.mandatory}"
+                                        columns="#{bindings.Incidentreporteddate.hints.displayWidth}"
+                                        shortDesc="#{bindings.Incidentreporteddate.hints.tooltip}"
+                                        id="id2">
+                            <f:validator binding="#{bindings.Incidentreporteddate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.Incidentreporteddate.format}"/>
+                          </af:inputDate>
+                        </af:panelFormLayout>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                  <af:showDetailItem text="Employee Info" id="sdi2"
+                                     disclosureListener="#{backingBeanScope.managerActivity.employeeInfoTabSelected}"
+                                     stretchChildren="first" disclosed="true">
+                    <af:panelGroupLayout id="pgl8e" layout="vertical">
+                      <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.Firstname.inputValue}"
+                                      label="First Name"
+                                      required="#{bindings.Firstname.hints.mandatory}"
+                                      readOnly="true"
+                                      columns="#{bindings.Firstname.hints.displayWidth}"
+                                      maximumLength="#{bindings.Firstname.hints.precision}"
+                                      shortDesc="#{bindings.Firstname.hints.tooltip}"
+                                      id="it1">
+                          <f:validator binding="#{bindings.Firstname.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Lastname.inputValue}"
+                                      label="Last Name"
+                                      required="#{bindings.Lastname.hints.mandatory}"
+                                      readOnly="true"
+                                      columns="#{bindings.Lastname.hints.displayWidth}"
+                                      maximumLength="#{bindings.Lastname.hints.precision}"
+                                      shortDesc="#{bindings.Lastname.hints.tooltip}"
+                                      id="it2">
+                          <f:validator binding="#{bindings.Lastname.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Departmentname.inputValue}"
+                                      label="Department Name"
+                                      required="#{bindings.Departmentname.hints.mandatory}"
+                                      readOnly="true"
+                                      columns="#{bindings.Departmentname.hints.displayWidth}"
+                                      maximumLength="#{bindings.Departmentname.hints.precision}"
+                                      shortDesc="#{bindings.Departmentname.hints.tooltip}"
+                                      id="it5"></af:inputText>
+                        <af:inputText value="#{bindings.Managername.inputValue}"
+                                      label="Manager Name"
+                                      required="#{bindings.Managername.hints.mandatory}"
+                                      readOnly="true"
+                                      columns="#{bindings.Managername.hints.displayWidth}"
+                                      maximumLength="#{bindings.Managername.hints.precision}"
+                                      shortDesc="#{bindings.Managername.hints.tooltip}"
+                                      id="it6"></af:inputText>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                </af:panelTabbed>
+              </f:facet>
+            </af:panelStretchLayout>
+          </af:gridCell>
+          <af:gridCell marginStart="5px" width="25%" marginEnd="5px" id="gc2"
+                       halign="stretch" valign="stretch">
+            <af:panelBox text="Disciplinary Action Status" id="pb1"
+                         background="medium">
+              <!--af:table value="#{bindings.EmployeeHRCheckVO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.EmployeeHRCheckVO1.rangeSize}"
+                        emptyText="#{bindings.EmployeeHRCheckVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.EmployeeHRCheckVO1.rangeSize}"
+                        rowBandingInterval="0" id="t2">
+                <af:column sortProperty="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.name}"
+                           sortable="false"
+                           headerText="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.label}"
+                           id="c1">
+                  <af:inputText value="#{row.bindings.Hrrelid.inputValue}"
+                                label="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.label}"
+                                required="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.mandatory}"
+                                columns="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.displayWidth}"
+                                maximumLength="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.precision}"
+                                shortDesc="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.tooltip}"
+                                id="it4">
+                    <f:validator binding="#{row.bindings.Hrrelid.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.EmployeeHRCheckVO1.hints.Hrrelid.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.EmployeeHRCheckVO1.hints.Hrid.name}"
+                           sortable="false"
+                           headerText="#{bindings.EmployeeHRCheckVO1.hints.Hrid.label}"
+                           id="c12">
+                  <af:inputText value="#{row.bindings.Hrid.inputValue}"
+                                label="#{bindings.EmployeeHRCheckVO1.hints.Hrid.label}"
+                                required="#{bindings.EmployeeHRCheckVO1.hints.Hrid.mandatory}"
+                                columns="#{bindings.EmployeeHRCheckVO1.hints.Hrid.displayWidth}"
+                                maximumLength="#{bindings.EmployeeHRCheckVO1.hints.Hrid.precision}"
+                                shortDesc="#{bindings.EmployeeHRCheckVO1.hints.Hrid.tooltip}"
+                                id="it8">
+                    <f:validator binding="#{row.bindings.Hrid.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.EmployeeHRCheckVO1.hints.Hrid.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.name}"
+                           sortable="false"
+                           headerText="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.label}"
+                           id="c10">
+                  <af:inputText value="#{row.bindings.Employeeid.inputValue}"
+                                label="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.label}"
+                                required="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.mandatory}"
+                                columns="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.displayWidth}"
+                                maximumLength="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.precision}"
+                                shortDesc="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.tooltip}"
+                                id="it7">
+                    <f:validator binding="#{row.bindings.Employeeid.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.EmployeeHRCheckVO1.hints.Employeeid.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.EmployeeHRCheckVO1.hints.Startdate.name}"
+                           sortable="false"
+                           headerText="#{bindings.EmployeeHRCheckVO1.hints.Startdate.label}"
+                           id="c13">
+                  <af:inputDate value="#{row.bindings.Startdate.inputValue}"
+                                label="#{bindings.EmployeeHRCheckVO1.hints.Startdate.label}"
+                                required="#{bindings.EmployeeHRCheckVO1.hints.Startdate.mandatory}"
+                                shortDesc="#{bindings.EmployeeHRCheckVO1.hints.Startdate.tooltip}"
+                                id="id1">
+                    <f:validator binding="#{row.bindings.Startdate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.EmployeeHRCheckVO1.hints.Startdate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.EmployeeHRCheckVO1.hints.Active.name}"
+                           sortable="false"
+                           headerText="#{bindings.EmployeeHRCheckVO1.hints.Active.label}"
+                           id="c5">
+                  <af:inputText value="#{row.bindings.Active.inputValue}"
+                                label="#{bindings.EmployeeHRCheckVO1.hints.Active.label}"
+                                required="#{bindings.EmployeeHRCheckVO1.hints.Active.mandatory}"
+                                columns="#{bindings.EmployeeHRCheckVO1.hints.Active.displayWidth}"
+                                maximumLength="#{bindings.EmployeeHRCheckVO1.hints.Active.precision}"
+                                shortDesc="#{bindings.EmployeeHRCheckVO1.hints.Active.tooltip}"
+                                id="it3">
+                    <f:validator binding="#{row.bindings.Active.validator}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table-->
+              <!--dvt:pieChart id="pieChart1" inlineStyle="width:250px;!important;" var="row" threeDEffect="on" sliceLabelPosition="inside" value="#{bindings.IncidentStatusCountVO1.collectionModel}">
+                        <dvt:chartLegend id="cl1" position="bottom"/>
+                        <dvt:pieDataItem id="di1" value="#{row.Statuscnt}" label="#{row.Status}"/>
+                    </dvt:pieChart>-->
+              <!--af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                text="CreateInsert"
+                                disabled="#{!bindings.CreateInsert.enabled}"
+                                id="cb2"/-->
+              <af:commandButton text="#{backingBeanScope.managerActivity.handleApproveButtonVisiblity}"
+                                binding="#{backingBeanScope.managerActivity.approveVisibleButton}"
+                                visible="false" id="cb1"/>
+            </af:panelBox>
+          </af:gridCell>
+        </af:gridRow>
+      </af:panelGridLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p2">
+    <af:dialog id="d2" title="Info" type="ok"
+               dialogListener="#{backingBeanScope.managerActivity.saveIncidentListener}">
+      <f:facet name="buttonBar"/>
+      <af:panelStretchLayout id="psl4" inlineStyle="width:300px;height:100px">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl3" layout="vertical">
+            <af:outputText value="#{backingBeanScope.managerActivity.saveMessage}"
+                           id="ot1"/>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+    <af:dialog id="d1" title="Confirmation" type="okCancel"
+               dialogListener="#{backingBeanScope.managerActivity.deleteIncidentListener}">
+      <f:facet name="buttonBar"/>
+      <af:panelStretchLayout id="psl3" inlineStyle="width:300px;height:100px">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl4" layout="vertical">
+            <af:outputText value="Do you want to delete the selected Incident?"
+                           id="ot4"/>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

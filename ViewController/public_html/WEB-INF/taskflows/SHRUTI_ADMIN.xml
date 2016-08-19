@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SHRUTI_ADMIN">
+    <default-activity id="__1">SHRUTI_1</default-activity>
+    <managed-bean id="__2">
+      <managed-bean-name id="__5">SHRUTI_PolicyBean</managed-bean-name>
+      <managed-bean-class id="__4">bean.SHRUTI_PolicyBean</managed-bean-class>
+      <managed-bean-scope id="__3">request</managed-bean-scope>
+    </managed-bean>
+    <view id="SHRUTI_1">
+      <page>/SHRUTI_ADMIN.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

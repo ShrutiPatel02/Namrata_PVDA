@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelBorderLayout id="pbl1" inlineStyle="height:inherit;">
+      <f:facet name="start">
+      </f:facet>
+      <f:facet name="end"/>
+      <!--<af:panelGroupLayout id="pgl4" layout="vertical" inlineStyle="background-color:#1E88E5;padding:5px;height:40px;">
+        <af:panelGroupLayout id="pgl3"
+                             layout="horizontal">
+          <af:outputText value="Policy Violation Disciplinary Action" id="ot1" inlineStyle="font-size:30px;font-weight:bold;color:#b9ecff"/>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>-->
+      <af:panelHeader  text="Policy Violation Disciplinary Action" inlineStyle="background-color:#1E88E5;padding:5px;height:50px;font-size:30px;font-weight:bold;color:#b9ecff" type="flow"  id="ph1">
+      <f:facet name="toolbar">
+      <af:panelGroupLayout id="pgl2" layout="horizontal" 
+                             inlineStyle="background-color:#1E88E5;">
+      <!--af:outputText value="#{sessionScope.fullName}" id="ot4"/> 
+      <af:commandImageLink icon="/images/default-user.jpg" id="i1c" action="#{configBean.logoutAction}" shortDesc="Signout" styleClass="profile-pic-40"/-->
+      </af:panelGroupLayout>
+     </f:facet>
+      </af:panelHeader>
+      <f:facet name="right">
+        <!--<af:panelGroupLayout id="pgl2" layout="horizontal" halign="right"
+                             inlineStyle="padding:5px;background-color:#1E88E5;">
+           <af:outputText value="#{sessionScope.fullName}" id="ot4"/> 
+          
+          <af:commandImageLink icon="/images/default-user.jpg" id="i1" action="#{configBean.logoutAction}" shortDesc="Signout" styleClass="profile-pic-40"/>
+        </af:panelGroupLayout>-->
+      </f:facet>
+    </af:panelBorderLayout>
+  </af:panelGroupLayout>
+</ui:composition>

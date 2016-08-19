@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.65.57" id="SHRUTI_ADMINPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DisciplinaryActionTypeVO2" RangeSize="25"
+              DataControl="PVDAAppModuleDataControl"
+              id="DisciplinaryActionTypeVO2Iterator"/>
+    <searchRegion Binds="DisciplinaryActionTypeVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DisciplinaryActionTypeVO2Query"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="PVDAAppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="PVDAAppModuleDataControl"/>
+    <tree IterBinding="DisciplinaryActionTypeVO2Iterator"
+          id="DisciplinaryActionTypeVO2">
+      <nodeDefinition DefName="model.view.admin.DisciplinaryActionTypeVO"
+                      Name="DisciplinaryActionTypeVO20">
+        <AttrNames>
+          <Item Value="Disciplinaryactiontypecode"/>
+          <Item Value="Disciplinaryactiontypename"/>
+          <Item Value="Disciplinaryactiontypedesc"/>
+          <Item Value="IsCorrecttive"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DisciplinaryActionTypeVO2Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="DisciplinaryActionTypeVO2Iterator" id="Create"
+            RequiresUpdateModel="true" Action="createRow"/>
+    <action IterBinding="DisciplinaryActionTypeVO2Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="DisciplinaryActionTypeVO2Iterator"
+          id="DisciplinaryActionTypeVO21">
+      <nodeDefinition DefName="model.view.admin.DisciplinaryActionTypeVO"
+                      Name="DisciplinaryActionTypeVO210">
+        <AttrNames>
+          <Item Value="Disciplinaryactiontypecode"/>
+          <Item Value="Disciplinaryactiontypename"/>
+          <Item Value="Disciplinaryactiontypedesc"/>
+          <Item Value="IsCorrecttive"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DisciplinaryActionTypeVO2Iterator"
+                     id="Disciplinaryactiontypecode">
+      <AttrNames>
+        <Item Value="Disciplinaryactiontypecode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DisciplinaryActionTypeVO2Iterator"
+                     id="Disciplinaryactiontypename">
+      <AttrNames>
+        <Item Value="Disciplinaryactiontypename"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DisciplinaryActionTypeVO2Iterator"
+                     id="Disciplinaryactiontypedesc">
+      <AttrNames>
+        <Item Value="Disciplinaryactiontypedesc"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DisciplinaryActionTypeVO2Iterator" StaticList="false"
+          Uses="LOV_IsCorrecttive" id="IsCorrecttive" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

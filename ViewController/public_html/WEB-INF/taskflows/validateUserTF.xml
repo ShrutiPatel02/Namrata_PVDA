@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="validateUserTF">
+    <default-activity id="__10">validateUserToken</default-activity>
+    <data-control-scope id="__1">
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name id="__2">jwt</name>
+      <value>#{pageFlowScope.jwt}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name id="__4">fusionJWTTokenEndpoint</name>
+      <value>#{pageFlowScope.fusionJWTTokenEndpoint}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <return-value-definition id="__27">
+      <name id="__26">jwtUserContext</name>
+      <value>#{pageFlowScope.userInfo}</value>
+      <class>vo.UserInfo</class>
+    </return-value-definition>
+    <managed-bean id="__7">
+      <managed-bean-name id="__8">userToken</managed-bean-name>
+      <managed-bean-class id="__6">bean.UserTokenBean</managed-bean-class>
+      <managed-bean-scope id="__9">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <exception-handler id="__25">invalidToken</exception-handler>
+    <method-call id="validateUserToken">
+      <method>#{pageFlowScope.userToken.validateUserToken}</method>
+      <outcome id="__11">
+        <fixed-outcome>validToken</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="goNext">
+      <outcome id="__12">
+        <name>goNext</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="invalidToken">
+      <method>#{pageFlowScope.userToken.handleInvalidToken}</method>
+      <outcome id="__18">
+        <fixed-outcome>error</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="error">
+      <outcome id="__19">
+        <name>error</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__14">validateUserToken</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__15">validToken</from-outcome>
+        <to-activity-id id="__16">goNext</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__21">invalidToken</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome id="__23">error</from-outcome>
+        <to-activity-id id="__22">error</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

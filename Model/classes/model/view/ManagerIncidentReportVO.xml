@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ManagerIncidentReportVO"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  SelectList="IncidentReportEO.CREATEDDTTM, 
+       IncidentReportEO.DISCIPLINARYACTIONCODE, 
+       IncidentReportEO.DISCIPLINARYACTIONTYPECODE, 
+       IncidentReportEO.EMPLOYEEID, 
+       IncidentReportEO.HRID, 
+       IncidentReportEO.INCIDENTID, 
+       IncidentReportEO.INCIDENTREPORTEDBY, 
+       IncidentReportEO.INCIDENTREPORTEDDATE, 
+       IncidentReportEO.INCIDENTSUMMARY, 
+       IncidentReportEO.LASTUPDDTTM, 
+       IncidentReportEO.REPORTINGMANAGER, 
+       IncidentReportEO.STATUS, 
+       IncidentReportEO.VIOLATIONCODE"
+  FromList="INCIDENTREPORT IncidentReportEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  Where="HRID=:P_ManagerId
+or
+Reportingmanager=:P_ManagerId">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.view.ManagerIncidentReportVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ManagerId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number">
+    <TransientExpression><![CDATA[adf.userSession.userData.loginUserId]]></TransientExpression>
+  </Variable>
+  <ViewAccessor
+    Name="EmployeeLOV1"
+    ViewObjectName="model.view.EmployeeLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="DisciplinaryActionLOV1"
+    ViewObjectName="model.view.DisciplinaryActionLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="DisciplinaryActionTypeLOV1"
+    ViewObjectName="model.view.DisciplinaryActionTypeLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="EmployeeHRLOV1"
+    ViewObjectName="model.view.EmployeeHRLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="IncidentReportedByLOV1"
+    ViewObjectName="model.view.IncidentReportedByLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ReportingManagerLOV1"
+    ViewObjectName="model.view.ReportingManagerLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="StatusLOV1"
+    ViewObjectName="model.view.StatusLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PolicyViolationVO1"
+    ViewObjectName="model.view.PolicyViolationVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Employeeid"
+    ListVOName="EmployeeLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_Employeeid_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Employeeid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Employeeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Fullname"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Disciplinaryactioncode"
+    ListVOName="DisciplinaryActionLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Disciplinaryactioncode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Disciplinaryactioncode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Disciplinaryactiondesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Disciplinaryactiontypecode"
+    ListVOName="DisciplinaryActionTypeLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Disciplinaryactiontypecode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Disciplinaryactiontypecode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Disciplinaryactiontypedesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Hrid"
+    ListVOName="EmployeeHRLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Hrid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Employeeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Fullname"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Incidentreportedby"
+    ListVOName="IncidentReportedByLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Incidentreportedby"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Employeeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Fullname"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Reportingmanager"
+    ListVOName="ReportingManagerLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Reportingmanager"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Employeeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Fullname"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="StatusLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StatusCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StatusDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Violationcode"
+    ListVOName="PolicyViolationVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Violationcode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Policyviolationcode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Policyviolationname"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="IncidentReportEO"
+    Entity="model.entity.IncidentReportEO"/>
+  <ViewAttribute
+    Name="Createddttm"
+    PrecisionRule="true"
+    EntityAttrName="Createddttm"
+    EntityUsage="IncidentReportEO"
+    AliasName="CREATEDDTTM"/>
+  <ViewAttribute
+    Name="Disciplinaryactioncode"
+    PrecisionRule="true"
+    EntityAttrName="Disciplinaryactioncode"
+    EntityUsage="IncidentReportEO"
+    AliasName="DISCIPLINARYACTIONCODE"
+    LOVName="LOV_Disciplinaryactioncode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Disciplinaryactiontypecode"
+    PrecisionRule="true"
+    EntityAttrName="Disciplinaryactiontypecode"
+    EntityUsage="IncidentReportEO"
+    AliasName="DISCIPLINARYACTIONTYPECODE"
+    LOVName="LOV_Disciplinaryactiontypecode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Employeeid"
+    PrecisionRule="true"
+    EntityAttrName="Employeeid"
+    EntityUsage="IncidentReportEO"
+    AliasName="EMPLOYEEID"
+    LOVName="LOV_Employeeid">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Hrid"
+    PrecisionRule="true"
+    EntityAttrName="Hrid"
+    EntityUsage="IncidentReportEO"
+    AliasName="HRID"
+    LOVName="LOV_Hrid">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Incidentid"
+    PrecisionRule="true"
+    EntityAttrName="Incidentid"
+    EntityUsage="IncidentReportEO"
+    AliasName="INCIDENTID"/>
+  <ViewAttribute
+    Name="Incidentreportedby"
+    PrecisionRule="true"
+    EntityAttrName="Incidentreportedby"
+    EntityUsage="IncidentReportEO"
+    AliasName="INCIDENTREPORTEDBY"
+    LOVName="LOV_Incidentreportedby">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Incidentreporteddate"
+    PrecisionRule="true"
+    EntityAttrName="Incidentreporteddate"
+    EntityUsage="IncidentReportEO"
+    AliasName="INCIDENTREPORTEDDATE"/>
+  <ViewAttribute
+    Name="Incidentsummary"
+    PrecisionRule="true"
+    EntityAttrName="Incidentsummary"
+    EntityUsage="IncidentReportEO"
+    AliasName="INCIDENTSUMMARY"/>
+  <ViewAttribute
+    Name="Lastupddttm"
+    PrecisionRule="true"
+    EntityAttrName="Lastupddttm"
+    EntityUsage="IncidentReportEO"
+    AliasName="LASTUPDDTTM"/>
+  <ViewAttribute
+    Name="Reportingmanager"
+    PrecisionRule="true"
+    EntityAttrName="Reportingmanager"
+    EntityUsage="IncidentReportEO"
+    AliasName="REPORTINGMANAGER"
+    LOVName="LOV_Reportingmanager">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="IncidentReportEO"
+    AliasName="STATUS"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Violationcode"
+    PrecisionRule="true"
+    EntityAttrName="Violationcode"
+    EntityUsage="IncidentReportEO"
+    AliasName="VIOLATIONCODE"
+    LOVName="LOV_Violationcode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

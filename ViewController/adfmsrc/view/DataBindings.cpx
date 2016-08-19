@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/pages/managerHomePage.jspx"
+          usageId="view_managerHomePagePageDef"/>
+    <page path="/fragments/managerIncidentDetails.jsff"
+          usageId="view_managerIncidentDetailsPageDef"/>
+    <page path="/fragments/Admin.jsff" usageId="view_AdminPageDef"/>
+    <page path="/pages/AdminPage.jspx" usageId="view_AdminPagePageDef"/>
+    <page path="/pages/Tree.jspx" usageId="view_TreePageDef"/>
+    <page path="/pages/Employee.jspx" usageId="view_EmployeePageDef"/>
+    <page path="/SHRUTI_ADMIN.jsff" usageId="view_SHRUTI_ADMINPageDef"/>
+    <page path="/pages/SHRUTI_Check.jspx" usageId="view_SHRUTI_CheckPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_managerHomePagePageDef" path="pages.managerHomePagePageDef"/>
+    <page id="view_managerIncidentDetailsPageDef"
+          path="fragments.managerIncidentDetailsPageDef"/>
+    <page id="view_AdminPageDef" path="fragments.AdminPageDef"/>
+    <page id="view_AdminPagePageDef" path="pages.AdminPagePageDef"/>
+    <page id="view_TreePageDef" path="pages.TreePageDef"/>
+    <page id="view_EmployeePageDef" path="pages.EmployeePageDef"/>
+    <page id="view_SHRUTI_ADMINPageDef"
+          path="view.pageDefs.SHRUTI_ADMINPageDef"/>
+    <page id="view_SHRUTI_CheckPageDef" path="pages.SHRUTI_CheckPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="PVDAAppModuleDataControl" Package="model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="PVDAAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="managerIncidentDetailsPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ManagerIncidentReportVO1" RangeSize="25"
+              DataControl="PVDAAppModuleDataControl"
+              id="ManagerIncidentReportVO1Iterator"/>
+    <searchRegion Binds="ManagerIncidentReportVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ManagerIncidentReportVO1Query"/>
+    <iterator Binds="EmployeeInfoVO1" RangeSize="25"
+              DataControl="PVDAAppModuleDataControl"
+              id="EmployeeInfoVO1Iterator"/>
+    <iterator Binds="EmployeeHRCheckVO1" RangeSize="25"
+              DataControl="PVDAAppModuleDataControl"
+              id="EmployeeHRCheckVO1Iterator"/>
+    <iterator Binds="EmployeeVO1" RangeSize="25"
+              DataControl="PVDAAppModuleDataControl" id="EmployeeVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ManagerIncidentReportVO1Iterator"
+          id="ManagerIncidentReportVO1">
+      <nodeDefinition DefName="model.view.ManagerIncidentReportVO"
+                      Name="ManagerIncidentReportVO10">
+        <AttrNames>
+          <Item Value="Createddttm"/>
+          <Item Value="Disciplinaryactioncode"/>
+          <Item Value="Disciplinaryactiontypecode"/>
+          <Item Value="Employeeid"/>
+          <Item Value="Hrid"/>
+          <Item Value="Incidentid"/>
+          <Item Value="Incidentreportedby"/>
+          <Item Value="Incidentreporteddate"/>
+          <Item Value="Incidentsummary"/>
+          <Item Value="Lastupddttm"/>
+          <Item Value="Reportingmanager"/>
+          <Item Value="Status"/>
+          <Item Value="Violationcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Createddttm">
+      <AttrNames>
+        <Item Value="Createddttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Disciplinaryactioncode">
+      <AttrNames>
+        <Item Value="Disciplinaryactioncode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Disciplinaryactiontypecode">
+      <AttrNames>
+        <Item Value="Disciplinaryactiontypecode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Employeeid">
+      <AttrNames>
+        <Item Value="Employeeid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator" id="Hrid">
+      <AttrNames>
+        <Item Value="Hrid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Incidentid">
+      <AttrNames>
+        <Item Value="Incidentid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Incidentreportedby">
+      <AttrNames>
+        <Item Value="Incidentreportedby"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Incidentreporteddate">
+      <AttrNames>
+        <Item Value="Incidentreporteddate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Incidentsummary">
+      <AttrNames>
+        <Item Value="Incidentsummary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Lastupddttm">
+      <AttrNames>
+        <Item Value="Lastupddttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Reportingmanager">
+      <AttrNames>
+        <Item Value="Reportingmanager"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ManagerIncidentReportVO1Iterator"
+                     id="Violationcode">
+      <AttrNames>
+        <Item Value="Violationcode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeInfoVO1Iterator" id="Firstname">
+      <AttrNames>
+        <Item Value="Firstname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeInfoVO1Iterator" id="Lastname">
+      <AttrNames>
+        <Item Value="Lastname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeInfoVO1Iterator" id="Departmentname">
+      <AttrNames>
+        <Item Value="Departmentname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeInfoVO1Iterator" id="Managername">
+      <AttrNames>
+        <Item Value="Managername"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="EmployeeHRCheckVO1Iterator" id="EmployeeHRCheckVO1">
+      <nodeDefinition DefName="model.view.EmployeeHRCheckVO"
+                      Name="EmployeeHRCheckVO10">
+        <AttrNames>
+          <Item Value="Hrrelid"/>
+          <Item Value="Hrid"/>
+          <Item Value="Employeeid"/>
+          <Item Value="Startdate"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ManagerIncidentReportVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Disciplinaryactioncode" id="Disciplinaryactioncode1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Disciplinaryactiontypecode"
+          id="Disciplinaryactiontypecode1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Employeeid" id="Employeeid1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Hrid" id="Hrid1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Incidentreportedby" id="Incidentreportedby1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Reportingmanager" id="Reportingmanager1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ManagerIncidentReportVO1Iterator" StaticList="false"
+          Uses="LOV_Violationcode" id="Violationcode1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO1">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO" Name="EmployeeVO10">
+        <AttrNames>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

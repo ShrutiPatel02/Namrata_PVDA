@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          >
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <!--<af:pageTemplateDef var="attrs" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+                    <af:xmlContent>
+    <afc:component>
+      <afc:display-name>defaultPageStretchTemplate</afc:display-name>
+      <afc:facet>
+        <afc:description>Content</afc:description>
+        <afc:facet-name>content</afc:facet-name>
+      </afc:facet>
+    </afc:component>
+  </af:xmlContent>
+  <af:decorativeBox id="pt_db1" topHeight="54px" theme="contentBody" inlineStyle="width:1130px;margin:auto">
+    <f:facet name="center">
+      <af:facetRef facetName="content"/>
+    </f:facet>
+    <f:facet name="top">
+      <af:declarativeComponent viewId="/fragments/pageHeader.jsff" id="pt_dc1"/>
+    </f:facet>
+  </af:decorativeBox>
+  <af:panelStretchLayout topHeight="50px" id="pt_psl1" rendered="false">
+    <f:facet name="top"/>
+    <f:facet name="center"/>
+  </af:panelStretchLayout>
+  </af:pageTemplateDef>-->
+</jsp:root>

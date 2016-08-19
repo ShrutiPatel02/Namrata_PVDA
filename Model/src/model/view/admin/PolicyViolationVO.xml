@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PolicyViolationVO"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  SelectList="PolicyViolationEO.POLICYVIOLATIONCODE, 
+       PolicyViolationEO.POLICYVIOLATIONNAME, 
+       PolicyViolationEO.POLICYVIOLATIONTYPEDESC"
+  FromList="POLICYVIOLATION PolicyViolationEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PolicyViolationEO"
+    Entity="model.entity.admin.PolicyViolationEO"/>
+  <ViewAttribute
+    Name="Policyviolationcode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Policyviolationcode"
+    EntityUsage="PolicyViolationEO"
+    AliasName="POLICYVIOLATIONCODE"/>
+  <ViewAttribute
+    Name="Policyviolationname"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Policyviolationname"
+    EntityUsage="PolicyViolationEO"
+    AliasName="POLICYVIOLATIONNAME"/>
+  <ViewAttribute
+    Name="Policyviolationtypedesc"
+    PrecisionRule="true"
+    EntityAttrName="Policyviolationtypedesc"
+    EntityUsage="PolicyViolationEO"
+    AliasName="POLICYVIOLATIONTYPEDESC"/>
+</ViewObject>

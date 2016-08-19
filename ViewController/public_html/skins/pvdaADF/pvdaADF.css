@@ -1,0 +1,156 @@
+/*af|document
+{
+  background-image:none;
+  background-color: #ffffff;
+}
+af|commandImageLink.global-profile-button::image{width: 32px;height:32px;border-radius:16px}
+af|panelGroupLayout.profile-pic-holder::image {width: 32px;height:32px;border-radius:16px}
+af|navigationPane-bar::separator-icon-style
+{
+  background-image: none; 
+  width: 0px; 
+}
+af|navigationPane-bar::link
+{
+  padding: 21px 3px 3px 3px;
+  border-bottom:3px solid transparent;
+  text-transform:uppercase;
+  font-size:10px;
+  color:#b9ecff;
+}
+af|navigationPane-bar::link:selected
+{*/
+  /*background-image:url('images/tabs/back-selected.png');*/
+  /*border-bottom:2px solid #b9ecff;
+  text-decoration:none;
+  font-weight:bold;
+}
+af|navigationPane-bar::body
+{*/
+  /*background-color: #eaeaea;*/
+/*}
+af|navigationPane-bar
+{
+  background-color: transparent;
+  height:40px; 
+}
+
+.global-menu af|menu::bar-item-open-icon-style
+{
+  background-image:url(images/dropdown.png)
+}
+.global-menu af|menu::bar-item
+{
+  background-color:#1da9da;
+  background-image:none;
+  border:none;
+  padding:3px 1px 1px 1px;
+  border-radius:3px;
+}
+.global-menu af|menu::bar-item-text
+{
+  color:#b9ecff;
+}
+
+af|menu::bar-item:highlighted.global-menu
+,af|menu::bar-item:hover-target.global-menu
+,af|menu::bar-item:depressed.global-menu
+,af|menu::bar-item:hover.global-menu
+{
+  background-color:#46b3dc;
+  background-image:none;
+  border:none;
+  padding:3px 1px 1px 1px;
+}
+
+
+af|column::column-header-cell 
+{
+  height:15px;
+  padding:3px;
+}   
+
+af|column::data-cell
+{
+  height:15px;
+  padding:3px;
+}*/
+
+
+
+/***********************/
+/*.profile-pic-50 {width: 50px;height:50px;border-radius:25px}
+.profile-pic-40 {width: 40px;height:40px;border-radius:20px}*/
+/**********************/
+/*.dropdown
+{
+  
+}
+
+af|commandToolbarButton
+{
+  padding:3px;
+}
+af|panelBox.container::header-start:core:default
+,af|panelBox.container::header-center:core:default
+,af|panelBox.container::header-end:core:default
+,af|panelBox.container::center:core:default
+,af|panelBox.container::footer-start:core:default
+,af|panelBox.container::footer-center:core:default
+,af|panelBox.container::footer-end:core:default
+{
+  background-image:none;
+}
+af|panelBox.container::center
+{
+  border:none;
+  padding:0px;
+}
+
+
+af|panelBox.container::header-text
+{
+  color:#666666;
+}
+af|panelFormLayout::label-cell  {
+    white-space: nowrap;
+}*/
+.myviewAmberBG
+{
+    float: left;
+    font-weight: bold;
+    height: 15px;
+    line-height: 15px;
+    margin-left: 2px;
+    padding: 4px 0;
+    text-align: center;
+    width: 24px;
+     background-color:rgb(255,156,49);
+    color: #FFFFFF;
+}
+.myviewRedBG
+{
+    float: left;
+    font-weight: bold;
+    height: 15px;
+    line-height: 15px;
+    margin-left: 2px;
+    padding: 4px 0;
+    text-align: center;
+    width: 24px;
+     background-color:Red;
+    color: #FFFFFF;
+}
+.myviewGreenBG
+{
+    float: left;
+    font-weight: bold;
+    height: 15px;
+    line-height: 15px;
+    margin-left: 2px;
+    padding: 4px 0;
+    text-align: center;
+    width: 24px;
+     background-color:green;
+    color: #FFFFFF;
+}

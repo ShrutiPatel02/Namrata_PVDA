@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="644px" endWidth="676px">
+    <f:facet name="bottom"/>
+    <f:facet name="start"> 
+      <af:panelHeader text="Disciplinary Action" id="ph3">
+        <f:facet name="context"/>
+        <f:facet name="menuBar">
+          <af:commandButton text="Cancel" id="cb7"
+                            actionListener="#{bindings.Rollback.execute}"
+                            partialSubmit="true"/>
+        </f:facet>
+        <f:facet name="toolbar">
+          <af:commandButton text="Save" id="cb8"
+                            actionListener="#{bindings.Commit.execute}"/>
+        </f:facet>
+        <f:facet name="legend"/>
+        <f:facet name="info"/>
+        <af:panelCollection id="pc2" partialTriggers="p2 d2">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t4">
+              <af:commandButton text="Add" id="cbInsert">
+                <af:showPopupBehavior popupId="p2"/>
+              </af:commandButton>
+              <af:commandButton text="Update" id="cb6">
+                <af:showPopupBehavior popupId="p2"/>
+              </af:commandButton>
+              <af:commandButton text="Delete" id="cb3"
+                                actionListener="#{bindings.Delete1.execute}"/>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.DisciplinaryActionTypeVO24.collectionModel}"
+                    var="row"
+                    rows="#{bindings.DisciplinaryActionTypeVO24.rangeSize}"
+                    emptyText="#{bindings.DisciplinaryActionTypeVO24.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.DisciplinaryActionTypeVO24.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.DisciplinaryActionTypeVO22Query.queryDescriptor}"
+                    queryListener="#{bindings.DisciplinaryActionTypeVO22Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectedRowKeys="#{bindings.DisciplinaryActionTypeVO24.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.DisciplinaryActionTypeVO24.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t3" partialTriggers="::cb3">
+            <af:column sortProperty="#{bindings.DisciplinaryActionTypeVO24.hints.Disciplinaryactiontypecode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.DisciplinaryActionTypeVO24.hints.Disciplinaryactiontypecode.label}"
+                       id="c4">
+              <af:outputText value="#{row.Disciplinaryactiontypecode}"
+                             id="ot5"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DisciplinaryActionTypeVO24.hints.Disciplinaryactiontypename.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.DisciplinaryActionTypeVO24.hints.Disciplinaryactiontypename.label}"
+                       id="c7">
+              <af:outputText value="#{row.Disciplinaryactiontypename}"
+                             id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DisciplinaryActionTypeVO24.hints.Disciplinaryactiontypedesc.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.DisciplinaryActionTypeVO24.hints.Disciplinaryactiontypedesc.label}"
+                       id="c6">
+              <af:outputText value="#{row.Disciplinaryactiontypedesc}"
+                             id="ot7"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DisciplinaryActionTypeVO24.hints.IsCorrecttive.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.DisciplinaryActionTypeVO24.hints.IsCorrecttive.label}"
+                       id="c5">
+              <af:outputText value="#{row.IsCorrecttive}" id="ot6"/>
+            </af:column>
+          </af:table>
+          <af:popup id="p2" contentDelivery="lazyUncached"
+                    popupFetchListener="#{CreateDisciplinaryAction.editPopupFetchListener}"
+                    popupCanceledListener="#{CreateDisciplinaryAction.editPopupCancelListener}">
+            <af:dialog id="d2" type="okCancel"
+                       dialogListener="#{CreateDisciplinaryAction.editDialogListener}"
+                       resize="on">
+              <af:panelFormLayout id="pfl2">
+                <af:inputText value="#{bindings.Disciplinaryactiontypecode.inputValue}"
+                              label="#{bindings.Disciplinaryactiontypecode.hints.label}"
+                              required="#{bindings.Disciplinaryactiontypecode.hints.mandatory}"
+                              columns="#{bindings.Disciplinaryactiontypecode.hints.displayWidth}"
+                              maximumLength="#{bindings.Disciplinaryactiontypecode.hints.precision}"
+                              shortDesc="#{bindings.Disciplinaryactiontypecode.hints.tooltip}"
+                              id="it7">
+                  <f:validator binding="#{bindings.Disciplinaryactiontypecode.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Disciplinaryactiontypename.inputValue}"
+                              label="#{bindings.Disciplinaryactiontypename.hints.label}"
+                              required="#{bindings.Disciplinaryactiontypename.hints.mandatory}"
+                              columns="#{bindings.Disciplinaryactiontypename.hints.displayWidth}"
+                              maximumLength="#{bindings.Disciplinaryactiontypename.hints.precision}"
+                              shortDesc="#{bindings.Disciplinaryactiontypename.hints.tooltip}"
+                              id="it5">
+                  <f:validator binding="#{bindings.Disciplinaryactiontypename.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Disciplinaryactiontypedesc.inputValue}"
+                              label="#{bindings.Disciplinaryactiontypedesc.hints.label}"
+                              required="#{bindings.Disciplinaryactiontypedesc.hints.mandatory}"
+                              columns="#{bindings.Disciplinaryactiontypedesc.hints.displayWidth}"
+                              maximumLength="#{bindings.Disciplinaryactiontypedesc.hints.precision}"
+                              shortDesc="#{bindings.Disciplinaryactiontypedesc.hints.tooltip}"
+                              id="it4">
+                  <f:validator binding="#{bindings.Disciplinaryactiontypedesc.validator}"/>
+                </af:inputText>
+                <af:selectOneChoice value="#{bindings.IsCorrecttive1.inputValue}"
+                                    label="#{bindings.IsCorrecttive1.label}"
+                                    required="#{bindings.IsCorrecttive1.hints.mandatory}"
+                                    shortDesc="#{bindings.IsCorrecttive1.hints.tooltip}"
+                                    id="soc1">
+                  <f:selectItems value="#{bindings.IsCorrecttive1.items}"
+                                 id="si1"/>
+                </af:selectOneChoice>
+              </af:panelFormLayout>
+            </af:dialog>
+          </af:popup>
+        </af:panelCollection>
+      </af:panelHeader>
+    </f:facet>
+    <f:facet name="end">
+      <af:panelHeader text="Policy Violation" id="ph2">
+        <f:facet name="context"/>
+        <f:facet name="menuBar">
+          <af:commandButton text="Cancel" id="cb5"
+                            actionListener="#{bindings.Rollback.execute}"
+                            partialSubmit="true"/>
+        </f:facet>
+        <f:facet name="toolbar">
+          <af:commandButton text="Save" id="cb4"
+                            actionListener="#{bindings.Commit.execute}"/>
+        </f:facet>
+        <f:facet name="legend"/>
+        <f:facet name="info"/>
+        <af:panelCollection id="pc1" partialTriggers="p1 d1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:commandButton text="Add" id="cbAdd">
+                <af:showPopupBehavior popupId="p1"/>
+              </af:commandButton>
+              <af:commandButton text="Update" id="cb2">
+                <af:showPopupBehavior popupId="p1"/>
+              </af:commandButton>
+              <af:commandButton text="Delete" id="cb1"
+                                actionListener="#{bindings.Delete.execute}"/>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.PolicyViolationVO22.collectionModel}"
+                    var="row" rows="#{bindings.PolicyViolationVO22.rangeSize}"
+                    emptyText="#{bindings.PolicyViolationVO22.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.PolicyViolationVO22.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.PolicyViolationVO22Query.queryDescriptor}"
+                    queryListener="#{bindings.PolicyViolationVO22Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectionListener="#{bindings.PolicyViolationVO22.collectionModel.makeCurrent}"
+                    rowSelection="multiple" id="t1"
+                    partialTriggers="::cb1 :::cb4 :::cb5 :::pc2:cb3"
+                    displayRow="selected">
+            <af:column sortProperty="#{bindings.PolicyViolationVO22.hints.Policyviolationcode.name}"
+                       filterable="true" sortable="true" width="180"
+                       headerText="#{bindings.PolicyViolationVO22.hints.Policyviolationcode.label}"
+                       id="c3">
+              <af:outputText value="#{row.Policyviolationcode}" id="ot2"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.PolicyViolationVO22.hints.Policyviolationname.name}"
+                       filterable="true" sortable="true" width="180"
+                       headerText="#{bindings.PolicyViolationVO22.hints.Policyviolationname.label}"
+                       id="c2">
+              <af:outputText value="#{row.Policyviolationname}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.PolicyViolationVO22.hints.Policyviolationtypedesc.name}"
+                       filterable="true" sortable="true" width="180"
+                       headerText="#{bindings.PolicyViolationVO22.hints.Policyviolationtypedesc.label}"
+                       id="c1">
+              <af:outputText value="#{row.Policyviolationtypedesc}" id="ot3"/>
+            </af:column>
+          </af:table>
+          <af:popup id="p1" contentDelivery="lazyUncached"
+                    popupFetchListener="#{PolicyViolation.editPopupFetchListener}"
+                    popupCanceledListener="#{PolicyViolation.editPopupCancelListener}">
+            <af:dialog id="d1" type="okCancel"
+                       dialogListener="#{PolicyViolation.editDialogListener}"
+                       resize="on">
+              <af:panelFormLayout id="pfl1">
+                <af:inputText value="#{bindings.Policyviolationcode.inputValue}"
+                              label="#{bindings.Policyviolationcode.hints.label}"
+                              required="#{bindings.Policyviolationcode.hints.mandatory}"
+                              columns="#{bindings.Policyviolationcode.hints.displayWidth}"
+                              maximumLength="#{bindings.Policyviolationcode.hints.precision}"
+                              shortDesc="#{bindings.Policyviolationcode.hints.tooltip}"
+                              id="it2">
+                  <f:validator binding="#{bindings.Policyviolationcode.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Policyviolationname.inputValue}"
+                              label="#{bindings.Policyviolationname.hints.label}"
+                              required="#{bindings.Policyviolationname.hints.mandatory}"
+                              columns="#{bindings.Policyviolationname.hints.displayWidth}"
+                              maximumLength="#{bindings.Policyviolationname.hints.precision}"
+                              shortDesc="#{bindings.Policyviolationname.hints.tooltip}"
+                              id="it1">
+                  <f:validator binding="#{bindings.Policyviolationname.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Policyviolationtypedesc.inputValue}"
+                              label="#{bindings.Policyviolationtypedesc.hints.label}"
+                              required="#{bindings.Policyviolationtypedesc.hints.mandatory}"
+                              columns="#{bindings.Policyviolationtypedesc.hints.displayWidth}"
+                              maximumLength="#{bindings.Policyviolationtypedesc.hints.precision}"
+                              shortDesc="#{bindings.Policyviolationtypedesc.hints.tooltip}"
+                              id="it3">
+                  <f:validator binding="#{bindings.Policyviolationtypedesc.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:dialog>
+          </af:popup>
+        </af:panelCollection>
+      </af:panelHeader>
+    </f:facet>
+    <f:facet name="top">
+      <af:panelHeader text="ADMIN" id="ph1">
+        <f:facet name="context"/>
+        <f:facet name="menuBar"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="legend"/>
+        <f:facet name="info"/>
+      </af:panelHeader>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.am.PVDAAppModule">
+      <AppModuleConfig name="1566A6E1E2A" user="DISPACTPAAS" JDBCName="Connection1" password="DISPACTPAAS" DeployPlatform="LOCAL" jbo.project="model.Model" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" BC4JConfigName="PVDAAppModuleLocal" ApplicationName="model.am.PVDAAppModule" DBconnection="jdbc:oracle:thin:@localhost:1521:XE">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Oracle" jbo.SQLBuilder="Oracle"/>
+         <Security AppModuleJndiName="model.am.PVDAAppModule"/>
+         <Tester FullProxyInterfaceName="model.am.common.PVDAAppModule"/>
+         <Custom LastUsedConfiguration="PVDAAppModuleLocal"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

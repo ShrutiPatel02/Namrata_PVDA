@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+  <skin>
+    <id>pvda.desktop</id>
+    <family>pvda</family>
+    <extends>fusionFx-v1.1.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>styles/pvda.css</style-sheet-name>
+  </skin>
+  <skin>
+    <id>pvdaADF.desktop</id>
+    <family>pvdaADF</family>
+    <extends>fusionFx-v3.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>skins/pvdaADF/pvdaADF.css</style-sheet-name>
+    <bundle-name>com.pvda.view.skinBundle</bundle-name>
+  </skin>
+</skins>

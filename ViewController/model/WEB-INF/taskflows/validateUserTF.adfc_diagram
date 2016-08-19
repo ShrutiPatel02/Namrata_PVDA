@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <MethodCall
+      id="MethodCall2">
+      <property
+         name="activityId">validateUserToken</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>validateUserToken&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">165.89648</property>
+      <property
+         name="x">140.0</property>
+   </MethodCall>
+   <TaskFlowReturn
+      id="TaskFlowReturn3">
+      <property
+         name="activityId">goNext</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>goNext&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  goNext&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">176.24707</property>
+      <property
+         name="x">471.0</property>
+   </TaskFlowReturn>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall2"
+      to="TaskFlowReturn3">
+      <property
+         name="fromOutcome">validToken</property>
+      <property
+         name="sdm:polyPoints">R50,181.0,165.5459,430.0,175.89648,L50</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall5">
+      <property
+         name="activityId">invalidToken</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>invalidToken&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">true</property>
+      <property
+         name="y">349.29883</property>
+      <property
+         name="x">141.0</property>
+   </MethodCall>
+   <TaskFlowReturn
+      id="TaskFlowReturn6">
+      <property
+         name="activityId">error</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>error&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  error&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">323.59766</property>
+      <property
+         name="x">459.0</property>
+   </TaskFlowReturn>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="MethodCall5"
+      to="TaskFlowReturn6">
+      <property
+         name="fromOutcome">error</property>
+      <property
+         name="sdm:polyPoints">R50,182.0,348.94824,418.0,323.24707,L50</property>
+   </ControlFlowCase>
+</SDM>

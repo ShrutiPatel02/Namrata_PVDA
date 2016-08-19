@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeeVO"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="bindmanagerid"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"
+    DefaultValue="1"/>
+  <SQLQuery>
+    <![CDATA[SELECT EmployeeEO.EMPLOYEEID, 
+       EmployeeEO.FIRSTNAME, 
+       EmployeeEO.LASTNAME, 
+       EmployeeEO.DEPARTMENTID, 
+       EmployeeEO.MANAGERID
+FROM EMPLOYEE EmployeeEO
+WHERE
+EmployeeEO.MANAGERID = ANY(select EmployeeEO.EMPLOYEEID from EMPLOYEE EmployeeEO where EmployeeEO.MANAGERID=:bindmanagerid)
+ UNION
+(select EmployeeEO.EMPLOYEEID,EmployeeEO.FIRSTNAME, 
+       EmployeeEO.LASTNAME, 
+       EmployeeEO.DEPARTMENTID, 
+       EmployeeEO.MANAGERID from EMPLOYEE EmployeeEO where EmployeeEO.MANAGERID=:bindmanagerid)]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="EmployeeEO"
+    Entity="model.entity.admin.EmployeeEO"/>
+  <ViewAttribute
+    Name="Employeeid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Employeeid"
+    EntityUsage="EmployeeEO"
+    AliasName="EMPLOYEEID"/>
+  <ViewAttribute
+    Name="Firstname"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Firstname"
+    EntityUsage="EmployeeEO"
+    AliasName="FIRSTNAME"/>
+  <ViewAttribute
+    Name="Lastname"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Lastname"
+    EntityUsage="EmployeeEO"
+    AliasName="LASTNAME"/>
+  <ViewAttribute
+    Name="Departmentid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Departmentid"
+    EntityUsage="EmployeeEO"
+    AliasName="DEPARTMENTID"/>
+  <ViewAttribute
+    Name="Managerid"
+    PrecisionRule="true"
+    EntityAttrName="Managerid"
+    EntityUsage="EmployeeEO"
+    AliasName="MANAGERID"/>
+  <ViewLinkAccessor
+    Name="ChildEmployeeVO"
+    ViewLink="model.view.admin.EmployeeFk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

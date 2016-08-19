@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeeHRLOV"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.view.EmployeeHRLOV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_managerId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number">
+    <TransientExpression><![CDATA[adf.userSession.userData.loginUserId]]></TransientExpression>
+  </Variable>
+  <SQLQuery>
+    <![CDATA[SELECT emp2.employeeid,EMP2.FIRSTNAME ||' '|| EMP2.LASTNAME AS FULLNAME   
+    
+FROM EMPLOYEE_HR EMPHR,    
+    
+  EMPLOYEE EMP,    
+    
+  employee emp2    
+    
+WHERE EMP.EMPLOYEEID = EMPHR.EMPLOYEEID    
+    
+AND EMP2.EMPLOYEEID  = EMPHR.HRID    
+    
+AND EMP.MANAGERID    = :p_managerId    
+    
+UNION    
+    
+SELECT emp1.employeeid,EMP1.FIRSTNAME ||' '|| EMP1.LASTNAME    
+    
+FROM EMPLOYEE emp1,    
+    
+  EMPLOYEE_HR emphr1    
+    
+WHERE EMPHR1.HRID = EMP1.EMPLOYEEID    
+    
+AND EMPhr1.hrid   = :p_managerId]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Employeeid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="EMPLOYEEID"
+    Expression="EMPLOYEEID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fullname"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="101"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FULLNAME"
+    Expression="FULLNAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="101"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

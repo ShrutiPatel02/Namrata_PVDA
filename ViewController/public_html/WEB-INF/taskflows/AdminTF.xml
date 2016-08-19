@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="AdminTF">
+    <default-activity id="__1">Admin</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name id="__4">CreateDisciplinaryAction</managed-bean-name>
+      <managed-bean-class id="__2">bean.CreateDisciplinaryActionBean</managed-bean-class>
+      <managed-bean-scope id="__3">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name id="__6">PolicyViolation</managed-bean-name>
+      <managed-bean-class id="__8">bean.PolicyViolationBean</managed-bean-class>
+      <managed-bean-scope id="__9">request</managed-bean-scope>
+    </managed-bean>
+    <view id="Admin">
+      <page>/fragments/Admin.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

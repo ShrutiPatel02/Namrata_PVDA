@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="managerIncidentDetailsTF">
+    <default-activity id="__8">loadFusionProperties</default-activity>
+    <data-control-scope id="__1">
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name id="__2">jwt</name>
+      <value>#{pageFlowScope.jwt}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__6">
+      <managed-bean-name id="__5">managerActivity</managed-bean-name>
+      <managed-bean-class id="__7">bean.ManagerActivity</managed-bean-class>
+      <managed-bean-scope id="__4">backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="loadFusionProperties">
+      <method>#{configBean.loadFusionProperties}</method>
+      <outcome id="__9">
+        <fixed-outcome>validate</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="validateUserTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflows/validateUserTF.xml</document>
+        <id>validateUserTF</id>
+      </task-flow-reference>
+      <input-parameter id="__20">
+        <name>jwt</name>
+        <value>#{pageFlowScope.jwt}</value>
+      </input-parameter>
+      <input-parameter id="__21">
+        <name>fusionJWTTokenEndpoint</name>
+        <value>#{pageFlowScope.fusionJWTTokenEndpoint}</value>
+      </input-parameter>
+      <return-value id="__22">
+        <name>jwtUserContext</name>
+        <value>#{sessionScope.jwtUserContext}</value>
+      </return-value>
+    </task-flow-call>
+    <view id="error">
+      <page>/fragments/error.jsff</page>
+    </view>
+    <view id="managerIncidentDetails">
+      <page>/fragments/managerIncidentDetails.jsff</page>
+    </view>
+    <control-flow-rule id="__15">
+      <from-activity-id id="__16">loadFusionProperties</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome id="__17">validate</from-outcome>
+        <to-activity-id id="__19">validateUserTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">validateUserTF</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__25">error</from-outcome>
+        <to-activity-id id="__27">error</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome id="__28">goNext</from-outcome>
+        <to-activity-id id="__13">managerIncidentDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.65.57" id="untitled1PageDef" Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="DisciplinaryActionTF1"
+              taskFlowId="/WEB-INF/DisciplinaryActionTF.xml#DisciplinaryActionTF"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="EmployeeVO1" RangeSize="25"
+              DataControl="PVDAAppModuleDataControl" id="EmployeeVO1Iterator"
+              ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO1">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO" Name="EmployeeVO10">
+        <AttrNames>
+          <Item Value="Firstname"/>
+          <Item Value="Managerid"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeeVO1Iterator" id="EmployeeVO11">
+      <nodeDefinition DefName="model.view.admin.EmployeeVO" Name="EmployeeVO110"
+                      TargetIterator="${bindings.EmployeeVO1Iterator}">
+        <AttrNames>
+          <Item Value="Employeeid"/>
+          <Item Value="Firstname"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildEmployeeVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
